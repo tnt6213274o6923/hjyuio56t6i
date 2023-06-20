@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hoom</title>
+    <link rel="icon" href="https://th.bing.com/th/id/OIP.9mdg9_RefU0tIPTTw0S_dwHaHa?pid=ImgDet&rs=1">
+</head>
+<body>
+    <h1 style="text-align: center;">tnt s</h1>
+       <form id="search-form">
+  <input style="text-align: center; display: block;margin: 0 auto; " type="text" id="search-input" placeholder="Search..."> <button type="submit" style=" display: block;margin: 0 auto; ">Search</button>
+        </form>
+</body>
+<script>
+    const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+
+searchForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent the form from submitting
+
+  const query = searchInput.value;
+  const searchUrl =   `https://www.google.com/search?q= ${query}`; // replace with your preferred search engine URL
+
+  window.location.href = searchUrl; // redirect the user to the search engine with the query as a parameter
+});
+const icon = document.querySelector('img');
+icon.addEventListener('click', () => {
+  // do something when the icon is clicked
+});
+
+</script>
+</html>
