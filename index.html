@@ -19,7 +19,14 @@
        <form id="search-form">
   <input style="text-align: center; display: block;margin: 0 auto; " type="text" id="search-input" placeholder="Search..."> <button type="submit" style=" display: block;margin: 0 auto; ">Search</button>
         </form>
-        <iframe src="https://news.google.com/home?hl=th&gl=TH&ceid=TH:th" frameborder="0"></iframe>
+        <!-- START SCROLLING NEWS WINDOW -->
+<div id="news_iframe_scroll">
+  <div class="news_scroll-title">
+  News and Updates<br>
+  </div>
+  <iframe name="NewsIFrame" src="news_scroll.html" frameborder="0" scrolling="no"></iframe>
+  </div>
+  <!-- END SCROLLING NEWS WINDOW -->
 </body>
 <script>
     const searchForm = document.getElementById('search-form');
