@@ -13,6 +13,23 @@
   width: 50%;
 }
     </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const resetButton = document.getElementById("resetButton");
+
+    resetButton.addEventListener("click", function () {
+        // สร้างฟังก์ชันเพื่อรีเซ็ตเว็บไซต์
+        resetWebsite();
+    });
+
+    function resetWebsite() {
+        // ที่นี่คุณสามารถเพิ่มโค้ดเพื่อรีเซ็ตเว็บไซต์ เช่น รีเซ็ตค่า input, ลบข้อมูลที่ถูกเปลี่ยนแปลง, ฯลฯ
+        // ตัวอย่าง: รีเซ็ตค่า input
+        document.querySelector('input[type="text"]').value = '';
+    }
+});
+
+    </script>
 </head>
 <body>
   <button id="resetButton">Reset</button>
