@@ -1,29 +1,34 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 </head>
 <body>
-  <div id="my-signin2"></div>
-  <script>
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton(495782990154-cn9o1hldtntraq9m2l9gg6ohg25705va.apps.googleusercontent.com) {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-  </script>
-
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  <button id="resetButton">Reset</button>
+  <img width="239%" height="114%" align="center" style="text-align: ;" class="center" src="ts__1_-removebg-preview.png" alt="">
+  <form id="search-form">
+    <input style="text-align: center; display: block; margin: 0 auto; " type="text" id="search-input" placeholder="Search..."> 
+    <button type="submit" style="display: block; margin: 0 auto;">Search</button>
+  </form>
+  <!-- START SCROLLING NEWS WINDOW -->
+  <div id="news_iframe_scroll">
+    <div class="news_scroll-title">
+      News and Updates<br>
+    </div>
+    <iframe name="NewsIFrame" width="100%" height="100%" src="news.html" frameborder="0" scrolling="no"></iframe>
+  </div>
+  <!-- END SCROLLING NEWS WINDOW -->
 </body>
+<script>
+  const searchForm = document.getElementById('search-form');
+  const searchInput = document.getElementById('search-input');
+  
+  searchForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent the form from submitting
+    const query = searchInput.value;
+    const searchUrl = `https://www.google.com/search?q=${query}`;
+    
+    // Redirect the user to the Google search page
+    window.location.href = searchUrl;
+  });
+</script>
 </html>
