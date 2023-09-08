@@ -1,41 +1,11 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hoom</title>
+    <link rel="icon" href="TS.png">
     <style>
-         #customBtn {
-      display: inline-block;
-      background: white;
-      color: #444;
-      width: 190px;
-      border-radius: 5px;
-      border: thin solid #888;
-      box-shadow: 1px 1px 1px grey;
-      white-space: nowrap;
-    }
-    #customBtn:hover {
-      cursor: pointer;
-    }
-    span.label {
-      font-family: serif;
-      font-weight: normal;
-    }
-    span.icon {
-      background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
-      display: inline-block;
-      vertical-align: middle;
-      width: 42px;
-      height: 42px;
-    }
-    span.buttonText {
-      display: inline-block;
-      vertical-align: middle;
-      padding-left: 42px;
-      padding-right: 42px;
-      font-size: 14px;
-      font-weight: bold;
-      /* Use the Roboto font that is loaded in the <head> */
-      font-family: 'Roboto', sans-serif;
-    }
- // up google
-
       .center {
   display: block;
   margin-left: auto;
@@ -43,37 +13,19 @@
   width: 50%;
 }
     </style>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-    const resetButton = document.getElementById("resetButton");
-
-    resetButton.addEventListener("click", function () {
-        // สร้างฟังก์ชันเพื่อรีเซ็ตเว็บไซต์
-        resetWebsite();
-    });
-
-    function resetWebsite() {
-        // ที่นี่คุณสามารถเพิ่มโค้ดเพื่อรีเซ็ตเว็บไซต์ เช่น รีเซ็ตค่า input, ลบข้อมูลที่ถูกเปลี่ยนแปลง, ฯลฯ
-        // ตัวอย่าง: รีเซ็ตค่า input
-        document.querySelector('input[type="text"]').value = '';
-    }
-});
-
-    </script>
 </head>
 <body>
-  <div class="loin">
-    
-  </div>
+  <input type="search" name="search">
     <img width="239%" height="114%" align="center" style="text-align: ;" class="center" src="ts__1_-removebg-preview.png" alt="">
        <form id="search-form">
   <input style="text-align: center; display: block;margin: 0 auto; " type="text" id="search-input" placeholder="Search..."> <button type="submit" style=" display: block;margin: 0 auto; ">Search</button>
         </form>
-
         <!-- START SCROLLING NEWS WINDOW -->
 <div id="news_iframe_scroll">
   <div class="news_scroll-title">
+  News and Updates<br>
   </div>
+  <iframe name="NewsIFrame" width="100%" height="100%" src="news.html" frameborder="0" scrolling="no"></iframe>
   </div>
   <!-- END SCROLLING NEWS WINDOW -->
 </body>
@@ -95,3 +47,4 @@ icon.addEventListener('click', () => {
 });
 
 </script>
+</html>
