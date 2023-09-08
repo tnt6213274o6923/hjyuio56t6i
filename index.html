@@ -1,70 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hoom</title>
-    <link rel="icon" href="TS.png">
-    <style>
-      .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-    </style>
+    <base target="_top">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-    const resetButton = document.getElementById("resetButton");
+        var firebaseConfig = { // enter the details below             apiKey: "AIzaSyAETAg6kj9AHtcjJmHkpT17Htxzffa60Mg",
+            authDomain: "login--webapp.firebaseapp.com",
+            projectId: "login--webapp",
+            storageBucket: "login--webapp.appspot.com",            messagingSenderId: "58151056786",
+            appId: "1:58151056786:web:f5016fc8bfa62db886bd4b"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script>
+        google.script.run.withSuccessHandler(function(url) {
+            var uiConfig = {
+                signInFlow: 'popup',
+                signInSuccessUrl: url,
+                signInOptions: [
+                    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                    firebase.auth.EmailAuthProvider.PROVIDER_ID
+                ],
+            };
+            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+            var user = firebase.auth().currentUser;
+            if (user) {
+               window.open('/j.html');
+                document.getElementById("signOut").style.display = "inline-block";
+            } else {
+                ui.start('#firebaseui-auth-container', uiConfig);
+            }
+        }).webAppUrl();
+    </script>
+    <script>
+        initApp = function() {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                  
+                    user.getIdToken().then(function(accessToken) {})
 
-    resetButton.addEventListener("click", function () {
-        // สร้างฟังก์ชันเพื่อรีเซ็ตเว็บไซต์
-        resetWebsite();
-    });
-
-    function resetWebsite() {
-        // ที่นี่คุณสามารถเพิ่มโค้ดเพื่อรีเซ็ตเว็บไซต์ เช่น รีเซ็ตค่า input, ลบข้อมูลที่ถูกเปลี่ยนแปลง, ฯลฯ
-        // ตัวอย่าง: รีเซ็ตค่า input
-        document.querySelector('input[type="text"]').value = '';
-    }
-});
-
+                } else {
+                    document.getElementById('account-details').textContent = '';
+                }
+            });
+        };
+        window.addEventListener('load', function() {
+            initApp();
+            
+        });
     </script>
 </head>
+
 <body>
-  <div class="loin">
-    
-  </div>
-    <img width="239%" height="114%" align="center" style="text-align: ;" class="center" src="ts__1_-removebg-preview.png" alt="">
-       <form id="search-form">
-  <input style="text-align: center; display: block;margin: 0 auto; " type="text" id="search-input" placeholder="Search..."> <button type="submit" style=" display: block;margin: 0 auto; ">Search</button>
-        </form>
-
-        <!-- START SCROLLING NEWS WINDOW -->
-<div id="news_iframe_scroll">
-  <div class="news_scroll-title">
-  News and Updates<br>
-  </div>
-  <iframe name="NewsIFrame" width="100%" height="100%" src="news.html" frameborder="0" scrolling="no"></iframe>
-  </div>
-  <!-- END SCROLLING NEWS WINDOW -->
+    <div class="container center-align">
+        <br /><br /><h1>เว็บแอประบบลงชื่อเข้าใช้งาน</h1><br />
+        <div id="firebaseui-auth-container"></div>
+        <div class="row">
+            <div class="col s12 m3 offset-m4">
+                <pre id="account-details" class="left-align"></pre>
+            </div>
+        </div>
+        <button style="display: none" id="signOut" class="firebaseui-idp-button mdl-button mdl-js-button mdl-button--raised firebaseui-idp-google firebaseui-id-idp-button" data-provider-id="google.com" data-upgraded=",MaterialButton">
+            <span class="firebaseui-idp-icon-wrapper"><img class="firebaseui-idp-icon" alt="" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"></span>
+            <span class="firebaseui-idp-text firebaseui-idp-text-long">Sign out (ออกจากระบบ)</span>
+        </button>
+        
+        <script>
+            document.getElementById('signOut').addEventListener('click', function(event) {
+                firebase.auth().signOut();
+                reload();
+            });
+            function reload() {
+                google.script.run.withSuccessHandler(function(url) {
+                    window.open(url, '_top');
+                }).webAppUrl();
+            }
+        </script>
+        
+    </div>
 </body>
-<script>
-    const searchForm = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
 
-searchForm.addEventListener('submit', function(event) {
-  event.preventDefault(); // prevent the form from submitting
-
-  const query = searchInput.value;
-  const searchUrl =   `https://www.google.com/search?q= ${query}`; // replace with your preferred search engine URL
-
-  window.location.href = searchUrl; // redirect the user to the search engine with the query as a parameter
-});
-const icon = document.querySelector('img');
-icon.addEventListener('click', () => {
-  // do something when the icon is clicked
-});
-
-</script>
 </html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hoom</title>
+    <link rel="icon" href="TS.png">
+    <style>
+      .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const resetButton = document.getElementById("resetButton");
+
+    resetButton.addEventListener("click", function () {
+        // สร้างฟังก์ชันเพื่อรีเซ็ตเว็บไซต์
+        resetWebsite();
+    });
+
+    function resetWebsite() {
+        // ที่นี่คุณสามารถเพิ่มโค้ดเพื่อรีเซ็ตเว็บไซต์ เช่น รีเซ็ตค่า input, ลบข้อมูลที่ถูกเปลี่ยนแปลง, ฯลฯ
+        // ตัวอย่าง: รีเซ็ตค่า input
+        document.querySelector('input[type="text"]').value = '';
+    }
+});
+
+    </script>
+</head>
+<body>
+  <div class="loin">
+    
+  </div>
+    <img width="239%" height="114%" align="center" style="text-align: ;" class="center" src="ts__1_-removebg-preview.png" alt="">
+       <form id="search-form">
+  <input style="text-align: center; display: block;margin: 0 auto; " type="text" id="search-input" placeholder="Search..."> <button type="submit" style=" display: block;margin: 0 auto; ">Search</button>
+        </form>
+
+        <!-- START SCROLLING NEWS WINDOW -->
+<div id="news_iframe_scroll">
+  <div class="news_scroll-title">
+  News and Updates<br>
+  </div>
+  <iframe name="NewsIFrame" width="100%" height="100%" src="news.html" frameborder="0" scrolling="no"></iframe>
+  </div>
+  <!-- END SCROLLING NEWS WINDOW -->
+</body>
+<script>
+    const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+
+searchForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent the form from submitting
+
+  const query = searchInput.value;
+  const searchUrl =   `https://www.google.com/search?q= ${query}`; // replace with your preferred search engine URL
+
+  window.location.href = searchUrl; // redirect the user to the search engine with the query as a parameter
+});
+const icon = document.querySelector('img');
+icon.addEventListener('click', () => {
+  // do something when the icon is clicked
+});
+
+</script>
+</html>
